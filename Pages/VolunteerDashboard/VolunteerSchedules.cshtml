@@ -1,0 +1,64 @@
+﻿@page
+@model DisasterAlleviationFoundation.Pages.VolunteerDashboard.VolunteerSchedulesModel
+<head>
+    <link rel="stylesheet" href="/css/StyleSheet.css" asp-append-version="true" />
+</head>
+<style>
+
+    .top-headers {
+        margin-top: 1rem;
+    }
+
+    .tables {
+        margin-top: 2rem;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 2rem;
+    }
+
+</style>
+<div class="top-headers">
+
+    <h1>Task</h1>
+    <h6 class="form-text">View schedules assigned by administration</h6>
+
+</div>
+
+<div class="tables">
+
+    <h6 class="form-text">My Schedules</h6>
+
+    <table id="table">
+
+        <thead>
+
+            <tr>
+
+                <th>Schedule Area</th>
+                <th>Schedule Time</th>
+                <th>Schedule Date</th>
+                <th>Status</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @for (int i = 0; i < Model.scheduleArea.Count; i++)
+            {
+                    <tr>
+                        <td>@Model.scheduleArea[i]</td>
+                        <td>@Model.scheduleTime[i]</td>
+                            <td>@Model.scheduleDate[i]</td>
+                        <td>@Model.status[i]</td>
+
+                    </tr>
+            }
+
+
+        </tbody>
+    </table>
+
+</div>
+

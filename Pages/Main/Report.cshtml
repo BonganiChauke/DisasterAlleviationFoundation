@@ -1,0 +1,45 @@
+﻿@page
+@model DisasterAlleviationFoundation.Pages.Main.ReportModel
+@{
+    ViewData["Title"] = "Report";
+}
+<div class="container">
+
+    <form class="form-check">
+
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName">
+        <span id="fullNameError" class="error-message"></span>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <span id="emailError" class="error-message"></span>
+
+        <label for="disasterType">Type of Disaster:</label>
+        <select id="disasterType" name="disasterType">
+            <option value="">--Select Disaster--</option>
+            <option value="Fire">Fire</option>
+            <option value="Flood">Flood</option>
+            <option value="Earthquake">Earthquake</option>
+            <option value="Tornado">Tornado</option>
+            <option value="Hurricane">Hurricane</option>
+        </select>
+        <span id="disasterTypeError" class="error-message"></span>
+        
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location">
+        <span id="locationError" class="error-message"></span>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4"></textarea>
+        <span id="descriptionError" class="error-message"></span>
+
+        <label for="disasterDate">Date of Disaster:</label>
+        <input type="date" id="disasterDate" name="disasterDate">
+        <span id="disasterDateError" class="error-message"></span>
+
+        <button type="submit">Submit Report</button>
+
+    </form>
+
+</div>

@@ -1,0 +1,89 @@
+﻿@page
+@model DisasterAlleviationFoundation.Pages.VolunteerDashboard.VolunteerDashboardModel
+<head>
+    <link rel="stylesheet" href="/css/StyleSheet.css" asp-append-version="true" />
+</head>
+@{
+    ViewData["Title"] = "Volunteer Home";
+}
+
+<div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Volunteer Dashboard</h3>
+            <button id="closeSidebar" class="close-btn">✖</button>
+        </div>
+        
+        <ul class="list-unstyled components">
+            
+            <li>
+                
+                <button class="button" onclick="Home('@Model.email')">Home</button>
+            </li>
+            <li>
+                <button class="button" onclick="Task('@Model.email')">Task</button>
+            </li>
+            <li>
+                <button class="button" onclick="Schedules('@Model.email')" >Schedules</button>
+            </li>
+            <li>
+                <button class="button" onclick="Profile('@Model.email')"> My Profile</button>
+            </li>
+            <li>
+                
+                <button class="button" onclick="LogOut()">Logout</button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Page Content -->
+    <div id="content">
+        <header>
+            <button type="button" id="sidebarCollapse" class="btn-toggle">
+                ☰
+            </button>
+            <h2>Volunteer Dashboard</h2>
+        </header>
+        <main>
+            <iframe id="contentFrame"
+                    name="contentFrame"
+                    src="/VolunteerDashboard/VolunteerHome?email=@Model.email"
+                    frameborder="0"></iframe>
+        </main>
+    </div>
+
+    <script>
+
+        //function to navigate home page
+        function Home(email){
+
+            //redirect user
+            document.getElementById("contentFrame").src = "/VolunteerDashboard/VolunteerHome?email=" + email + "";
+        }
+
+        //function to navigate to task page
+        function Task(email){
+
+            //redirect user
+            document.getElementById("contentFrame").src = "/VolunteerDashboard/VolunteerTask?email=" + email + "";
+        }
+
+        //function to navigate to schedules page
+        function Schedules(email){
+
+            //redirect user
+            document.getElementById("contentFrame").src = "/VolunteerDashboard/VolunteerSchedules?email=" + email + "";
+        }
+
+        //function to log out
+        function LogOut() {
+            const confirmation = confirm("Are you sure you want log out");
+
+            if (confirmation) {
+                window.location.href = '/Index';
+            }
+        }
+
+</script>
+</div>

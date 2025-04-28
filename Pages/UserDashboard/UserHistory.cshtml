@@ -1,0 +1,178 @@
+﻿@page
+@model DisasterAlleviationFoundation.Pages.UserDashboard.UserHistoryModel
+<head>
+    <link rel="stylesheet" href="/css/StyleSheet.css" asp-append-version="true" />
+</head>
+<style>
+
+    .tables{
+
+        margin-top: 2rem;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 2rem;
+    }
+
+</style>
+<div class="top-headers">
+
+    <h1>View Donation and Reports</h1>
+    <h6 class="form-text">View donations and reports</h6>
+
+</div>
+
+<div class="tables">
+
+    <h6 class="form-text">Donations</h6>
+
+    <table id=table>
+
+        <thead>
+
+            <tr>
+                <th>Donation ID</th>
+                <th>Donation Type</th>
+                <th>Donation Amount</th>
+                <th>Food Type</th>
+                <th>Payment Type</th>
+                <th>Donation Date</th>
+                <th>Description</th>
+                <th>Clothes Number</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @for (int i = 0; i < Model.ID.Count; i++)
+            {
+                <tr>
+                    <td>@Model.ID[i]</td>
+                    <td>@Model.donationType[i]</td>
+                    <td>@Model.donationAmount[i]</td>
+                    <td>@Model.foodType[i]</td>
+                    <td>@Model.paymentType[i]</td>
+                    <td>@Model.donated[i]</td>
+                    <td>@Model.description[i]</td>
+                    <td>@Model.clothesNumber[i]</td>
+                    
+
+                </tr>
+            }
+
+        </tbody>
+
+
+    </table>
+
+</div>
+<div class="tables">
+
+    <h6 class="form-text">Reports</h6>
+
+    <table id=table>
+
+        <thead>
+
+            <tr>
+                <th>Report ID</th>
+                <th>Disaster Type</th>
+                <th>Location</th>
+                <th>Descriptions</th>
+                <th>Date</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @for (int j = 0; j < Model.disaterID.Count; j++)
+            {
+                <tr>
+                    <td>@Model.disaterID[j]</td>
+                    <td>@Model.disasterType[j]</td>
+                    <td>@Model.location[j]</td>
+                    <td>@Model.disaterDescription[j]</td>
+                    <td>@Model.date[j]</td>
+                    
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>
+<div class="tables">
+
+    <h6 class="form-text">Reported Emergency</h6>
+
+    <table id=table>
+
+        <thead>
+
+            <tr>
+                <th>Report ID</th>
+                <th>Location</th>
+                <th>Descriptions</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @for (int j = 0; j < Model.emergencyID.Count; j++)
+            {
+                <tr>
+                    <td>@Model.emergencyID[j]</td>
+                    <td>@Model.emergencyLocation[j]</td>
+                    <td>@Model.emergencyDescription[j]</td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<div class="tables">
+
+    <h6 class="form-text">Reported FeedBack</h6>
+
+    <table id=table>
+
+        <thead>
+
+            <tr>
+                <th>Feedback ID</th>
+                <th>Title</th>
+                <th>Description</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @for (int j = 0; j < Model.feedBackID.Count; j++)
+            {
+                <tr>
+                    <td>@Model.feedBackID[j]</td>
+                    <td>@Model.feedBackTitle[j]</td>
+                    <td>@Model.feedBackDescription[j]</td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>
+

@@ -1,0 +1,46 @@
+﻿@page
+@model DisasterAlleviationFoundation.Pages.Accounts.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container">
+
+    <form class="form" id="signInForm" method="post">
+
+        <h1 class="form-text">Login</h1>
+
+        <div id="Details" class="Email">
+
+            <input type="text" id="email" class="input" name="email" placeholder="">
+            <label class="label" id="email">Email</label>
+
+        </div>
+
+        <div id="Details" class="Password">
+
+            <input type="password" id="password" class="input" name="password" placeholder="">
+            <label class=label for="password">Password</label>
+        
+        </div>
+        
+        <br />
+        <p>@Model.message</p>
+        <br />
+        <button type="submit">Sign In</button>
+        <br />
+        <br />
+        <p>Forgot Password? <a href="/Accounts/ResetPassword"> Reset Password</a></p>
+
+        <div style="display:flex; justify-content: space-between">
+
+            <p>Register as Volunteer<a href="/Accounts/VolunteerRegistration"> Volunteer </a></p>
+            <p> Register as User<a href="/Accounts/userRegistration"> User</a></p>
+
+        </div>
+
+        <p><a href="/Accounts/Anonymously"> Sign In Anonymously</a></p>
+
+    </form>
+
+</div>

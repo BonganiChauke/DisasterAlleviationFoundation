@@ -1,0 +1,267 @@
+﻿@page
+@model DisasterAlleviationFoundation.Pages.AdminDashboard.AdminVolunteerManagementModel
+@{
+    ViewData["Title"] = "Admin Home";
+}
+<style type="text/css">
+
+
+    .forms{
+        width: 300px;
+        height: 100%;
+        margin-left: 2rem;
+        margin-top: 2rem;
+    }
+
+    .forms-containers{
+        width: 100%;
+        height: 100%;
+        background-color: azure;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 40px;
+        margin-top: 2rem;
+    }
+
+    #sendMessages{
+        width: 100%;
+    }
+
+</style>
+<div class="top-headers">
+
+    <h1>Volunteer Management</h1>
+    <h6 class="form-text">Manage Volunteer tasks, schedules, and communication</h6>
+
+</div>
+
+<div class="forms-containers">
+
+    <form class="forms" id="tasksForm" method="post" asp-page-handler="AddTask">
+
+        <input type="hidden" name="formType" value="addTask" />
+
+        <h1 class="form-text"> Add Task </h1>
+
+        <div id="Details" class="TaskName">
+
+            <input type="text" class="input" placeholder="" name="taskName" id="taskName" required maxlength="50" />
+            <label class="label" for="taskName">Task Name</label>
+            <span id="taskNameError" class="error-message"></span>
+
+        </div>
+
+        <div id="Details" class="Description">
+
+            <textarea class="input" placeholder="" name="taskDescription" id="taskDescription" rows="4" required maxlength="50" style="height: 50px"></textarea>
+            <label class="label" for="taskDescription">Description</label>
+            <span id="taskDescriptionError" class="error-message"></span>
+
+        </div>
+
+        <div id="Details" class="Area">
+
+            <input type="text" class="input" placeholder="" name="areaName" id="areaName" required maxlength="50" />
+            <label class="label" for="areaName">Area Name</label>
+            <span id="areaNameError" class="error-message"></span>
+
+        </div>
+
+        <p>@Model.message</p>
+        <br />
+        <button type="submit">Save Task</button>
+
+    </form>
+
+    <form class="forms" id="addSchedules" method="post" asp-page-handler="AddSchedules">
+
+        <input type="hidden" name="formType" value="addSchedules" />
+
+        <h1 class="form-text"> Add Volunteer Schedules</h1>
+
+        
+        <div id="Details" class="areaName">
+
+            <select id="areaName" class="input" placeholder="" name="areaName" required>
+                @for (int i = 0; i < @Model.taskArea.Count; i++)
+                {
+                    <option>@Model.taskArea[i]</option>
+                }
+
+            </select>
+            <label class="label" for="areaName">Task Area</label>
+            <span id="areaNameError" class="error-message"></span>
+        </div>
+
+        <div id="Details">
+            <input class="input" type="date" id="scheduleDate" name="scheduleDate" min="" required>
+            <label class="label" for="scheduleDate">Date</label>
+            <span id="scheduleDateError" class="error-message"></span>
+        </div>
+
+        <div id="Details" class="Time">
+
+            <input type="time" class="input" placeholder="" name="scheduleTime" id="scheduleTime" required />
+            <label class="label" for="scheduleTime">Time</label>
+            <span id="scheduleTimeError" class="error-message"></span>
+
+        </div>
+
+        <p>@Model.scheduleAlert</p>
+        <br />
+        <button type="submit">Save Schedule</button>
+
+    </form>
+
+    
+
+</div>
+
+<div class="forms-containers">
+
+    <!-- assign schedules and tasks to volunteer forms -->
+    <form class="forms" id="assignTasks" method="post" asp-page-handler="AssignTasks">
+
+        <input type="hidden" name="formType" value="assignTasks" />
+
+        <h1 class="form-text"> Assign Volunteer</h1>
+
+        <div id="Details" class="taskNameAssign">
+
+            <select id="taskNameAssign" class="input" placeholder="" name="taskNameAssign">
+                @for (int i = 0; i < @Model.taskNames.Count; i++)
+                {
+                    <option>@Model.taskNames[i]</option>
+                }
+
+            </select>
+            <label class="label" for="taskNameAssign">Task Name</label>
+            <span id="taskNameAssignError" class="error-message"></span>
+        </div>
+
+        <div id="Details" class="volunteer">
+
+            <select id="volunteer" class="input" placeholder="" name="volunteerAssignEmail">
+                @for (int i = 0; i < @Model.emailVolunteer.Count; i++)
+                {
+                    <option>@Model.emailVolunteer[i]</option>
+                }
+
+            </select>
+            <label class="label" for="volunteer">Volunteer</label>
+            <span id="volunteerError" class="error-message"></span>
+        </div>
+
+        <p>@Model.assignTasksAlert</p>
+        <br />
+        <button type="submit">Assign Volunteer</button>
+
+    </form>
+
+    <form class="forms" id="assignSchedules" method="post" asp-page-handler="AssignSchedules">
+
+        <input type="hidden" name="formType" value="assignSchedules" />
+
+        <h1 class="form-text"> Assign Schedules</h1>
+
+        <div id="Details" class="scheduleArea">
+
+            <select id="scheduleArea" class="input" placeholder="" name="scheduleArea">
+                @for (int i = 0; i < @Model.taskArea.Count; i++)
+                {
+                    <option>@Model.taskArea[i]</option>
+                }
+
+            </select>
+            <label class="label" for="scheduleArea"> Schedule Area</label>
+            <span id="scheduleAreaError" class="error-message"></span>
+        </div>
+
+        <div id="Details" class="volunteer">
+
+            <select id="volunteerEmailSchedules" class="input" placeholder="" name="volunteerEmailSchedules">
+                @for (int i = 0; i < @Model.emailVolunteer.Count; i++)
+                {
+                    <option>@Model.emailVolunteer[i]</option>
+                }
+
+            </select>
+            <label class="label" for="volunteerEmailSchedules">Volunteer</label>
+            <span id="volunteerError" class="error-message"></span>
+        </div>
+
+        <p>@Model.assignSchedulesAlert</p>
+        <br />
+        <button type="submit">Assign Volunteer</button>
+
+    </form>
+
+</div>
+
+<div class="forms-containers">
+
+    <form class="forms" id="sendMessages" method="post" asp-page-handler="SendMessages">
+
+        <input type="hidden" name="formType" value="sendMessages" />
+
+        <h1 class="form-text"> Communicate with Volunteers </h1>
+
+        <div id="Details" class="volunteer">
+
+            <select id="volunteer" class="input" placeholder="" name="volunteer">
+                @for(int i = 0;  i < @Model.emailVolunteer.Count; i++){
+                    <option>@Model.emailVolunteer[i]</option>
+                }
+                
+            </select>
+            <label class="label" for="volunteer"> Volunteer </label>
+            <span id="volunteerError" class="error-message"></span>
+        </div>
+
+        <div id="Details" class="Description">
+
+            <textarea class="input" placeholder="" name="messageDescription" id="taskDescription" rows="8"></textarea>
+            <label class="label" for="taskDescription">Message</label>
+            <span id="taskDescriptionError" class="error-message"></span>
+
+        </div>
+        
+
+        <p>@Model.sendMessagesAlert</p>
+        <br />
+        <button type="submit">Send Message</button>
+
+    </form>
+
+</div>
+
+<script>
+
+    // Get today's date in YYYY-MM-DD format
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('scheduleDate').setAttribute('min', today);
+
+  // Set time restrictions based on the selected date
+  document.getElementById('scheduleDate').addEventListener('change', function () {
+    const selectedDate = this.value;
+    const scheduleTime = document.getElementById('scheduleTime');
+
+    // If the selected date is today, restrict time input
+    if (selectedDate === today) {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const currentTime = `${hours}:${minutes}`;
+      
+      // Set the min attribute to the current time
+      scheduleTime.setAttribute('min', currentTime);
+    } else {
+      // Remove time restriction for future dates
+      scheduleTime.removeAttribute('min');
+    }
+  });
+
+    // Set the min time as soon as the page loads
+    setMinTime();
+
+</script>

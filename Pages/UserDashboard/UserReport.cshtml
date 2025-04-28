@@ -1,0 +1,110 @@
+﻿@page
+@model DisasterAlleviationFoundation.Pages.UserDashboard.UserReportModel
+<head>
+    <link rel="stylesheet" href="/css/StyleSheet.css" asp-append-version="true" />
+</head>
+<style>
+
+    
+
+</style>
+<div class="top-headers">
+
+    <h1>Report Disaster</h1>
+    <h6 class="form-text">Report disasters in your area or around you</h6>
+
+</div>
+
+<div class="forms-container">
+
+    <form class="forms" id="report-form" method="post" enctype="multipart/form-data">
+
+        <input type="hidden" name="formType" value="reportDisaster" />
+
+        <h1 class="form-text"> Report Disaster </h1>
+
+        <div id="Details">
+
+
+            <select class="input" placeholder="" id="disasterType" name="disasterType" required>
+                <option value="">--Select Disaster--</option>
+                <option value="Fire">Fire</option>
+                <option value="Flood">Flood</option>
+                <option value="Earthquake">Earthquake</option>
+                <option value="Tornado">Tornado</option>
+                <option value="Hurricane">Hurricane</option>
+            </select>
+            <label class="label" for="disasterType">Type of Disaster:</label>
+            <span id="disasterTypeError" class="error-message"></span>
+
+        </div>
+
+        <div id="Details">
+            <input class="input" type="text" id="location" name="location" placeholder="" required>
+            <label class="label" for="location">Location</label>
+            <span id="locationError" class="error-message"></span>
+
+        </div>
+
+        <div id="Details">
+            <textarea class="input" placeholder="" id="description" name="description" rows="4" required></textarea>
+            <label class="label" for="description">Description</label>
+            <span id="descriptionError" class="error-message"></span>
+
+        </div>
+
+        <div id="Details">
+            <input class="input" type="date" id="disasterDate" name="disasterDate" required>
+            <label class="label" for="disasterDate">Date of Disaster</label>
+            <span id="disasterDateError" class="error-message"></span>
+        </div>
+
+        <br />
+        <h6 class="form-text">Optional</h6>
+
+        <!-- File input for capturing photo or video -->
+        <div id="Details">
+            <input class="input" type="file" name="CaptureImage" capture accept="image/*" />
+            <label class="label" for="mediaCapture">Upload Picture</label>
+
+        </div>
+
+        <div id="Details">
+            <input class="input" type="file" name="CaptureVideo" capture accept="video/*" />
+            <label class="label" for="mediaCapture">Upload Video</label>
+
+        </div>
+
+        <p>@Model.message</p>
+        <br />
+        <button type="submit" value="Upload">Submit Report</button>
+
+    </form>
+
+</div>
+<script>
+
+
+    // Get the date input element
+    const disasterDateInput = document.getElementById('disasterDate');
+
+    // Get today's date in YYYY-MM-DD format
+    const today = new Date().toISOString().split('T')[0];
+
+    // Set the minimum date to today
+    disasterDateInput.setAttribute('min', today);
+
+    // Optional: Add a validation to show an error message if a past date is selected
+    disasterDateInput.addEventListener('change', function () {
+        const selectedDate = new Date(disasterDateInput.value);
+        const currentDate = new Date(today);
+        const errorMessage = document.getElementById('disasterDateError');
+
+        if (selectedDate < currentDate) {
+            errorMessage.textContent = "You cannot select a past date.";
+        } else {
+            errorMessage.textContent = "";
+        }
+    });
+
+</script>

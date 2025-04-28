@@ -1,0 +1,98 @@
+﻿@page
+@model DisasterAlleviationFoundation.Pages.UserDashboard.UserDashboardModel
+<head>
+    <link rel="stylesheet" href="/css/StyleSheet.css" asp-append-version="true" />
+</head>
+@{
+    ViewData["Title"] = "User Home";
+}
+<div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>User Dashboard</h3>
+            <button id="closeSidebar" class="close-btn">✖</button>
+        </div>
+
+        <ul class="list-unstyled components">
+
+            <li>
+
+                <button class="button" onclick="Home('@Model.email')">Home</button>
+            </li>
+            <li>
+                <button class="button" onclick="Donation('@Model.email')">Donate</button>
+            </li>
+            <li>
+                <button class="button" onclick="Report('@Model.email')">Reports Disaster</button>
+            </li>
+            <li>
+                <button class="button" onclick="History('@Model.email')">History</button>
+            </li>
+            <li>
+                <button class="button" onclick="Profile('@Model.email')">Profile</button>
+            </li>
+            <li>
+
+                <button class="button" onclick="LogOut()">Logout</button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Page Content -->
+    <div id="content">
+        <header>
+            <button type="button" id="sidebarCollapse" class="btn-toggle">
+                ☰
+            </button>
+            <h2>User Dashboard</h2>
+        </header>
+        <main>
+            <iframe id="contentFrame"
+                    name="contentFrame"
+                    src="/UserDashboard/UserHome?email=@Model.email"
+                    frameborder="0"></iframe>
+        </main>
+    </div>
+
+    <script>
+
+        //function to navigate to home
+        function Home(email){
+
+            //redirect user
+            document.getElementById("contentFrame").src = "/UserDashboard/UserHome?email=" + email + "";
+        }
+
+        //function to naviagate to donation
+        function Donation(email){
+
+            //redirect user
+            document.getElementById("contentFrame").src = "/UserDashboard/UserDonation?email=" + email + "";
+        }
+
+        //function to navigate to report disaster
+        function Report(email){
+
+            //redirect user
+            document.getElementById("contentFrame").src = "/UserDashboard/UserReport?email=" + email + "";
+        }
+
+        //function to navigate to history 
+        function History(email){
+
+            //redirect user
+            document.getElementById("contentFrame").src = "/UserDashboard/UserHistory?email=" + email + "";
+        }
+
+        //function to log out
+        function LogOut() {
+            const confirmation = confirm("Are you sure you want log out");
+
+            if (confirmation) {
+                window.location.href = '/Index';
+            }
+        }
+
+</script>
+</div>

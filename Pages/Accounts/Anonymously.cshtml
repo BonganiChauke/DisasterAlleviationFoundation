@@ -1,0 +1,273 @@
+﻿@page
+@model DisasterAlleviationFoundation.Pages.Accounts.AnonymouslyModel
+@{
+    ViewData["Title"] = "Anonymously";
+}
+<style>
+
+    .container-forms {
+        width: 100%;
+        height: 100%;
+        background-color: azure;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 40px;
+        margin-top: 2rem;
+    }
+
+    .container .container-forms {
+        display: flex;
+        justify-content: space-evenly;
+        
+    }
+
+    #donation-form, #report-form {
+        width: 450px;
+        
+    }
+
+    #report-form {
+        margin-top: 2rem;
+    }
+
+    form, h1 {
+        justify-content: center;
+        align-content: center;
+        text-align: center;
+    }
+
+</style>
+
+
+<div class="container">
+
+    <div class="text-center">
+
+        <h1 class="h1">Anonymously</h1>
+        <h5 class="form-text">You can donate or report disasters anonymous</h5>
+
+    </div>
+
+    <div class="container-forms">
+
+        <div class="donate-forms">
+
+
+            <form class="form" id="donation-form" method="post" enctype="multipart/form-data">
+
+                <input type="hidden" name="formType" value="donate" />
+
+                <h1 class="form-text">Donate</h1>
+
+                <div id="Details" class="donationType">
+
+                    <select id="donationType" class="input" placeholder="" name="donationType" required onchange="handleDonationTypeChange()">
+                        <option value="">--Select Resource--</option>
+                        <option value="Clothes">Clothes</option>
+                        <option value="Food">Food</option>
+                        <option value="Medical Supplies">Medical Supplies</option>
+                        <option value="Money">Money</option>
+                    </select>
+                    <label class="label" for="donationType">Type of Donation</label>
+                    <span id="donationTypeError" class="error-message"></span>
+                </div>
+
+                <!-- Money Donation Fields -->
+                <div id="moneyFields" style="display: none;">
+
+                    <div id="Details" class="donationAmount">
+
+                        <input class="input" type="number" placeholder="" id="donationAmount" name="donationAmount" min="1" step="0.01">
+                        <label class="label" for="donationAmount">Donation Amount </label>
+                        <span id="donationAmountError" class="error-message"></span>
+
+                    </div>
+
+                    <div id="Details" class="paymentType">
+                        <select class="input" id="paymentType" name="paymentType" placeholder="">
+                            <option value="">--Select Payment Type--</option>
+                            <option value="Credit Card">Credit Card</option>
+                            <option value="Debit Card">Debit Card</option>
+                        </select>
+                        <label class="label" for="paymentType">Payment Type</label>
+                        <span id="paymentTypeError" class="error-message"></span>
+
+                    </div>
+
+                </div>
+
+                <!-- Food Donation Fields -->
+                <div id="foodFields" style="display: none;">
+
+                    <div id="Details">
+                        <select class="input" id="foodType" name="foodType" placeholder="">
+                            <option value="">--Select Type of Food--</option>
+                            <option value="Non-perishable">Non-perishable</option>
+                            <option value="Perishable">Perishable</option>
+                        </select>
+                        <label class="label" for="foodType">Type of Food</label>
+                        <span id="foodTypeError" class="error-message"></span>
+
+                    </div>
+
+                </div>
+
+                <!-- Clothes Donation Fields -->
+                <div id="clothesFields" style="display: none;">
+                    <div id="Details" class="numberOfClothes">
+                        <input class="input" placeholder="" type="number" id="numberOfClothes" name="numberOfClothes" min="1">
+                        <label class="label" for="numberOfClothes">Number of Clothes</label>
+                        <span id="numberOfClothesError" class="error-message"></span>
+                    </div>
+                </div>
+
+                <div id="Details">
+                    <textarea class="input" placeholder="" id="message"  name="message" rows="4" required></textarea>
+                    <label class="label" for="messages">Message</label>
+                </div>
+
+                <br />
+                <h6 class="form-text">Optional</h6>
+
+                <!-- File input for capturing photo or video -->
+                <div id="Details">
+                    <input class="input" type="file" name="CaptureImage" capture accept="image/*" />
+                    <label class="label" for="mediaCapture">Upload Picture</label>
+
+                </div>
+
+                <div id="Details">
+                    <input class="input" type="file" name="CaptureVideo" capture accept="video/*" />
+                    <label class="label" for="mediaCapture">Upload Video</label>
+
+                </div>
+
+                <br/>
+                <p>@Model.error</p>
+                <br />
+                <button type="submit">Donate</button>
+
+
+            </form>
+
+
+        </div>
+
+        <div class="report-forms">
+
+            <form class="form" id="report-form" method="post" enctype="multipart/form-data">
+
+                <input type="hidden" name="formType" value="reportDisaster" />
+
+                <h1 class="form-text"> Report Disaster </h1>
+
+                <div id="Details">
+
+
+                    <select class="input" placeholder="" id="disasterType" name="disasterType" required>
+                        <option value="">--Select Disaster--</option>
+                        <option value="Fire">Fire</option>
+                        <option value="Flood">Flood</option>
+                        <option value="Earthquake">Earthquake</option>
+                        <option value="Tornado">Tornado</option>
+                        <option value="Hurricane">Hurricane</option>
+                    </select>
+                    <label class="label" for="disasterType">Type of Disaster:</label>
+                    <span id="disasterTypeError" class="error-message"></span>
+
+                </div>
+
+                <div id="Details">
+                    <input class="input" type="text" id="location" name="location" placeholder="" required>
+                    <label class="label" for="location">Location</label>
+                    <span id="locationError" class="error-message"></span>
+
+                </div>
+
+                <div id="Details">
+                    <textarea class="input" placeholder="" id="description" name="description" rows="4" required></textarea>
+                    <label class="label" for="description">Description</label>
+                    <span id="descriptionError" class="error-message"></span>
+
+                </div>
+
+                <div id="Details">
+                    <input class="input" type="date" id="disasterDate" name="disasterDate" required>
+                    <label class="label" for="disasterDate">Date of Disaster</label>
+                    <span id="disasterDateError" class="error-message"></span>
+                </div>
+
+                <br />
+                <h6 class="form-text">Optional</h6>
+
+                <!-- File input for capturing photo or video -->
+                <div id="Details">
+                    <input class="input" type="file" name="CaptureImage" capture accept="image/*" />
+                    <label class="label" for="mediaCapture">Upload Picture</label>
+
+                </div>
+
+                <div id="Details">
+                    <input class="input" type="file" name="CaptureVideo" capture accept="video/*" />
+                    <label class="label" for="mediaCapture">Upload Video</label>
+
+                </div>
+
+                <p>@Model.message</p>
+                <br />
+                <button type="submit" value="Upload">Submit Report</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+</div>
+<script>
+    function handleDonationTypeChange() {
+        const donationType = document.getElementById('donationType').value;
+
+        // Hide all fields initially
+        document.getElementById('moneyFields').style.display = 'none';
+        document.getElementById('foodFields').style.display = 'none';
+        document.getElementById('clothesFields').style.display = 'none';
+
+        // Show relevant fields based on selection
+        if (donationType === 'Money') {
+            document.getElementById('moneyFields').style.display = 'block';
+        } else if (donationType === 'Food') {
+            document.getElementById('foodFields').style.display = 'block';
+        } else if (donationType === 'Clothes') {
+            document.getElementById('clothesFields').style.display = 'block';
+        }
+    }
+
+        // Get the date input element
+        const disasterDateInput = document.getElementById('disasterDate');
+
+        // Get today's date in YYYY-MM-DD format
+        const today = new Date().toISOString().split('T')[0];
+
+        // Set the minimum date to today
+        disasterDateInput.setAttribute('min', today);
+
+        // Optional: Add a validation to show an error message if a past date is selected
+        disasterDateInput.addEventListener('change', function() {
+            const selectedDate = new Date(disasterDateInput.value);
+            const currentDate = new Date(today);
+            const errorMessage = document.getElementById('disasterDateError');
+
+            if (selectedDate < currentDate) {
+                errorMessage.textContent = "You cannot select a past date.";
+            } else {
+                errorMessage.textContent = "";
+            }
+        });
+
+</script>
+
+
+
+

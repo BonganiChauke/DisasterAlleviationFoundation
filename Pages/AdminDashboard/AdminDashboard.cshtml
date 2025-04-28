@@ -1,0 +1,117 @@
+﻿@page
+@model DisasterAlleviationFoundation.Pages.AdminDashboard.AdminDashboardModel
+<head>
+    <link rel="stylesheet" href="/css/StyleSheet.css" asp-append-version="true" />
+</head>
+@{
+    ViewData["Title"] = "Admin Home";
+}
+<div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Admin Dashboard</h3>
+            <button id="closeSidebar" class="close-btn">✖</button>
+        </div>
+
+        <ul class="list-unstyled components">
+
+            <li>
+
+                <button class="button" onclick="Home()">Home</button>
+            </li>
+            <li>
+                <button class="button" onclick="Activity()">Volunteer Activity</button>
+            </li>
+            <li>
+                <button class="button" onclick="Volunteer('@Model.email')">Volunteer Management</button>
+            </li>
+            <li>
+                <button class="button" onclick="Resource('@Model.email')">Resource Allocation</button>
+            </li>
+            <li>
+                <button class="button" onclick="Profile('@Model.email')">Profile</button>
+            </li>
+            <li>
+
+                <button class="button" onclick="LogOut()">Logout</button>
+            </li>
+        </ul>
+        
+    </nav>
+
+    <!-- Page Content -->
+    <div id="content">
+        <header>
+            <button type="button" id="sidebarCollapse" class="btn-toggle">
+                ☰
+            </button>
+            <h2>Admin Dashboard</h2>
+        </header>
+        <main>
+            <iframe id="contentFrame"
+                    name="contentFrame"
+                    src="/AdminDashboard/AdminHome?email=@Model.email"
+                    frameborder="0">
+                </iframe>
+        </main>
+
+    </div>
+
+    <script type="text/javascript">
+
+        //function to navigate to home
+        function Home() {
+
+            //redirect user
+            document.getElementById("contentFrame").src = "/AdminDashboard/AdminHome";
+        }
+
+        //function to navigate to volunteer tasks and schedules
+        function Activity(){
+
+            //redirect user
+            document.getElementById("contentFrame").src = "/AdminDashboard/AdminVolunteerActivity";
+        }
+
+        //function to navigate to donations
+        function Donation(email){
+
+            //redirect user
+            document.getElementById("contentFrame").src = "/AdminDashboard/AdminDonation?email=" + email + "" ;
+
+        }
+
+        //fuction to navigate to disaster reports
+        function Disaster(email){
+
+            //redirect user
+            document.getElementById("contentFrame").src = "/AdminDashboard/AdminDisasterReports?email=" + email + "";
+        }
+
+        //function to navigate to resource allocation
+        function Resource(email){
+
+            //redirect user
+            document.getElementById("contentFrame").src = "/AdminDashboard/AdminResourceAllocation?email=" + email + "";
+        }
+
+        //function to navigate volunteer management
+        function Volunteer(email){
+
+            //redirect the user
+            document.getElementById("contentFrame").src = "/AdminDashboard/AdminVolunteerManagement?email=" + email + "";
+
+        }
+
+        //function to log out 
+        function LogOut(){
+            const confirmation = confirm("Are you sure you want log out");
+
+            if (confirmation) {
+                window.location.href = '/Index';
+            }
+        }
+
+    </script>
+</div>

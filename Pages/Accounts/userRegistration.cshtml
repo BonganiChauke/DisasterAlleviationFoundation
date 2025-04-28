@@ -1,0 +1,61 @@
+﻿@page
+@model DisasterAlleviationFoundation.Pages.Accounts.userRegistrationModel
+@{
+    ViewData["Title"] = "Registration";
+}
+
+<div class="container">
+
+    <form class="form" id="signupForm" method="post">
+
+        <h1 class="form-text">Registration</h1>
+
+        <div id="Details" class="FirstName">
+
+            <input type="text" id="firstName" class="input" name="firstName" placeholder="" required>
+            <label class="label" id="firstName">First Name</label>
+            <span id="firstNameError" class="error-message"></span>
+
+        </div>
+
+        <div id="Details" class="LastName">
+
+            <input type="text" id="lastName" name="lastName" class="input" placeholder="" required>
+            <label class="label" for="lastName">Last Name</label>
+            <span id="lastNameError" class="error-message"></span>
+
+        </div>
+        
+        <div id="Details" class="Email">
+
+            <input type="text" class="input" id="email" name="email" placeholder="" required>
+            <label class="label" for="email">Email</label>
+            <span id="emailError" class="error-message"></span>
+
+        </div>
+
+        <div id="Details" class="Password">
+
+            
+            <input type="password" class="input password-input" id="password" name="password" placeholder="" required>
+            <label class="label" for="password">Password</label>
+            <span id="passwordError" class="error-message"></span>
+
+        </div>
+
+        <div id="Details" class="Confirm">
+            <input type="password" class="input password-input" id="confirmPassword" name="confirmPassword" placeholder="" required>
+            <label class="label" for="confirmPassword">Confirm Password</label>
+            <span style="margin-top: 20px;" id="confirmPasswordError" class="error-message"></span>
+        </div>
+       
+        
+        <p>@Model.message</p>
+        <br />
+        <button type="submit">Register</button>
+        <br />
+        <p>Already have an account? <a href="/Accounts/Login"> Login </a> </p>
+
+    </form>
+
+</div>

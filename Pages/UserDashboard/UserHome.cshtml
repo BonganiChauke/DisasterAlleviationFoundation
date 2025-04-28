@@ -1,0 +1,92 @@
+﻿@page
+@model DisasterAlleviationFoundation.Pages.UserDashboard.UserHomeModel
+<head>
+    <link rel="stylesheet" href="/css/StyleSheet.css" asp-append-version="true" />
+</head>
+
+<style type="text/css">
+
+    .forms {
+        width: 300px;
+        height: 100%;
+        margin-left: 2rem;
+        margin-top: 2rem;
+    }
+
+    .forms-containers {
+        width: 100%;
+        height: 100%;
+        background-color: azure;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 40px;
+        margin-top: 2rem;
+    }
+
+</style>
+
+<div class="top-headers">
+
+    @for (int i = 0; i < Model.firstName.Count; i++)
+    {
+        <h1>Hi, @Model.firstName[i] @Model.lastName[i] </h1>
+        <h6 class="form-text">Manage your profile, donate and report disasters and emergencies</h6>
+    }
+
+
+</div>
+
+<div class="forms-containers">
+
+    <!-- Form for reporting emergencies -->
+    <form class="forms" id="help" method="post">
+
+        <input type="hidden" name="formType" value="help" />
+
+        <h1 class="form-text">Report Emergencies</h1>
+
+        <div id="Details" class="EmergencyArea">
+            <input type="text" class="input" name="emergencyArea" id="emergencyArea" required maxlength="50" />
+            <label class="label" for="emergencyArea">Location</label>
+            <span id="emergencyAreaError" class="error-message"></span>
+        </div>
+
+        <div id="Details" class="Descriptions">
+            <textarea class="input" name="emergencyDescription" id="emergencyDescription" style="height: 150px" rows="4" required maxlength="100"></textarea>
+            <label class="label" for="emergencyDescription">Description</label>
+            <span id="emergencyDescriptionError" class="error-message"></span>
+        </div>
+
+        <p>@Model.alertEmergncy</p>
+        <button type="submit">Save Emergency</button>
+    </form>
+
+    <form class="forms" id="feedBack" method="post">
+
+        <input type="hidden" name="formType" value="feedBack" />
+
+        <h1 class="form-text"> Request services or give us feedback </h1>
+
+        <div id="Details" class="TitleMessage">
+
+            <input type="text" class="input" placeholder="" name="titleMessage" id="titleMessage" required maxlength="200" />
+            <label class="label" for="titleMessage">Title</label>
+            <span id="titleMessageError" class="error-message"></span>
+
+        </div>
+
+        <div id="Details" class="Description">
+
+            <textarea class="input" placeholder="" name="feedBackMessage" id="feedBackMessage" rows="4" required maxlength="100" style="height: 150px"></textarea>
+            <label class="label" for="feedBackMessage">Description</label>
+            <span id="feedBackMessageError" class="error-message"></span>
+
+        </div>
+
+        <p>@Model.alertFeedBack</p>
+        <br />
+        <button type="submit">Save</button>
+
+    </form>
+
+</div>

@@ -1,0 +1,416 @@
+﻿@page
+@model DisasterAlleviationFoundation.Pages.Main.ServicesModel
+@{
+    ViewData["Title"] = "Get Involved";
+}
+<header class="header" data-header>
+
+    <div class="container">
+
+        <div class="overlay" data-overlay></div>
+
+        <a href="#" class="logo"><img src="../Images/logo-removebg-preview.png" alt="DAF logo"></a>
+
+        <button class="menu-open-btn" data-menu-open-btn><ion-icon name="menu-outline"></ion-icon></button>
+
+        <nav class="navbar" data-navbar>
+
+            <button class="menu-close-btn" data-menu-close-btn><ion-icon name="close-outline"></ion-icon></button>
+
+            <a href="#" class="logo"><img src="../Images/logo-removebg-preview.png" alt="DAF logo"></a>
+
+            <ul class="navbar-list">
+                <li><a href="/Index" class="navbar-link">Home</a></li>
+                <li><a href="/Main/About" class="navbar-link">About Us</a></li>
+                <li><a href="/Main/Contact" class="navbar-link">Contact Us</a></li>
+                <li><a href="#" class="navbar-link">Get Involved</a></li>
+
+            </ul>
+
+            <button class="btn btn-secondary" onclick="location.href='/Accounts/Login'">Sign In</button>
+        </nav>
+
+    </div>
+
+</header>
+
+<main>
+
+    <article>
+
+        <section class="hero">
+
+            <div class="container">
+
+                <figure class="hero-banner">
+                    <img src="../Images/report.jpg">
+                </figure>
+
+                <div class="hero-content">
+
+                    <h1 class="h1 hero-title">Our Services</h1>
+
+                    <p class="section-text">
+
+                        Get to know the services and be part of our family
+
+                    </p>
+
+
+                </div>
+
+            </div>
+        </section>
+
+        <section class="departments">
+
+
+            <div class="container">
+
+                <h2 class="h2 departments-title">View Our Services</h2>
+
+                <ul class="departments-list">
+
+                    <li>
+                        <div class="departments-card">
+
+                            <a href="#" class="card-banner">
+                                <figure>
+                                    <img src="/Images/volunteer.jpg" alt="Volunteer Work">
+                                </figure>
+                            </a>
+
+                            <a href="#">
+                                <h3 class="h3 card-title">Volunteer Work</h3>
+                            </a>
+
+                            <p class="card-text">
+                                Be part of our organization.
+                            </p>
+
+
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="departments-card">
+
+                            <a href="#" class="card-banner">
+                                <figure>
+                                    <img src="/Images//report.jpg" alt="Report Disasters">
+                                </figure>
+                            </a>
+
+                            <a href="#">
+                                <h3 class="h3 card-title">Report Disasters</h3>
+                            </a>
+
+                            <p class="card-text">
+                                Report disasters and emergency 
+                            </p>
+
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="departments-card">
+
+                            <a href="#" class="card-banner">
+                                <figure>
+                                    <img src="/Images/donate.jpg" alt="Donate">
+                                </figure>
+                            </a>
+
+                            <a href="#">
+                                <h3 class="h3 card-title">Donate</h3>
+                            </a>
+
+                            <p class="card-text">
+                                Help others 
+                            </p>
+
+                        </div>
+                    </li>
+
+                </ul>
+
+                <button class="btn btn-primary" onclick="location.href='/Accounts/Login'">Get Involved</button>
+
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+
+                <div class="title-wrapper">
+
+                    <h2 class="h2 cta-title">
+                        <span>Subscribe to our newsletter</span>
+                    </h2>
+                </div>
+
+
+            </div>
+
+            <div class="container">
+
+                <form class="form" id="subscribeForm" method="post">
+
+                    <div id="Details" class="EmailForm">
+
+                        <input type="text" id="emailSubscribe" class="input" name="emailSubscribe" placeholder="">
+                        <label class="label">Email</label>
+                        <span id="emailSubscribeError" class="error-message"></span>
+
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+
+                </form>
+
+            </div>
+
+
+        </section>
+
+
+    </article>
+
+</main>
+
+<footer class="footer">
+
+    <div class="footer-top">
+        <div class="container">
+
+            <div class="footer-brand">
+
+                <a href="#" class="logo">
+                    <img src="../Images/logo-removebg-preview.png">
+                </a>
+
+                <p class="footer-text">
+                    Disaster Alleviation Foundation A home For ALL.
+                </p>
+
+                <ul class="social-list">
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-google"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="social-link">
+                            <ion-icon name="logo-linkedin"></ion-icon>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="footer-link-box">
+
+                <ul class="footer-list">
+
+                    <li>
+                        <p class="footer-link-title">Values</p>
+                    </li>
+
+                    <li>
+                        <a href="#" class="footer-link">Mission</a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="footer-link">Goal</a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="footer-link">Beliefs</a>
+                    </li>
+
+                </ul>
+
+                <ul class="footer-list">
+
+                    <li>
+                        <p class="footer-link-title">Disaster Alleviation Foundation</p>
+                    </li>
+
+                    <li>
+                        <a href="../Main/about.html" class="footer-link">About</a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="footer-link">Terms</a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="footer-link">Privacy Policy</a>
+                    </li>
+
+                    <li>
+                        <a href="../Main/volunteer.html" class="footer-link">Volunteer</a>
+                    </li>
+
+                </ul>
+
+                <ul class="footer-list">
+
+                    <li>
+                        <p class="footer-link-title">Report Disasters </p>
+                    </li>
+
+                    <li>
+                        <a href="../Main/report.html" class="footer-link">Report Disaster</a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="footer-link">Stay Informed</a>
+                    </li>
+
+                </ul>
+
+                <ul class="footer-list">
+
+                    <li>
+                        <p class="footer-link-title">Contact</p>
+                    </li>
+
+                    <li class="contact-item">
+                        <span>Call : </span>
+
+                        <a href="tel:0112342311" class="contact-link">011 234 2311</a>
+                    </li>
+
+                    <li class="contact-item">
+                        <span>Email : </span>
+
+                        <a href="mailto:disater.alleviation,foundation@gmail.com" class="contact-link">disater.alleviation.foundation@gmail.co.za</a>
+                    </li>
+
+                    <li class="contact-item">
+                        <span>Address : </span>
+
+                        <a href="#" class="contact-link">
+                            <address>Johannesburg, South Africa</address>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container">
+            <p class="copyright">
+                &copy; 2024 <a href="">Disater Alleviation Foundation</a>. All right reserved
+            </p>
+        </div>
+    </div>
+
+</footer>
+
+<script>
+
+    //nav functionality
+    const navOpenBtn = document.querySelector("[data-menu-open-btn]");
+    const navCloseBtn = document.querySelector("[data-menu-close-btn]");
+    const navbar = document.querySelector("[data-navbar]");
+    const overlay = document.querySelector("[data-overlay]");
+
+    const navElemArr = [navOpenBtn, navCloseBtn, overlay];
+
+    for (let i = 0; i < navElemArr.length; i++) {
+
+        navElemArr[i].addEventListener("click", function () {
+
+            navbar.classList.toggle("active");
+            overlay.classList.toggle("active");
+
+        });
+
+    }
+
+
+    //header functionality
+    const header = document.querySelector("[data-header]");
+
+    window.addEventListener("scroll", function () {
+
+        window.scrollY >= 20 ? header.classList.add("active") : header.classList.remove("active");
+
+    });
+
+    // subscribe form event
+    document.getElementById("subscribeForm").addEventListener("submit", function (event) {
+
+        //clear existing errors
+        clearErrorMessages();
+
+        //value from the form
+        const email = document.getElementById("emailSubscribe").value.trim();
+
+        // Validation flags
+        let isValid = true;
+
+        // Email Validation
+        if (email === "") {
+            isValid = false;
+            displayErrorMessage("emailSubscribeError", "Email is required.");
+        }
+        if (!validateEmail(email)) {
+            isValid = false;
+            displayErrorMessage("emailSubscribeError", "Invalid Email Address.");
+        }
+
+
+        if (isValid) {
+
+            alert("Successful Subscribed");
+
+        } else {
+
+            //prevent
+            event.preventDefault();
+        }
+
+    });//end
+
+    // Function to display error message
+    function displayErrorMessage(elementId, message) {
+        document.getElementById(elementId).textContent = message;
+    }
+
+    // Function to clear all error messages
+    function clearErrorMessages() {
+        let errorMessages = document.querySelectorAll(".error-message");
+        errorMessages.forEach(function (errorMessage) {
+            errorMessage.textContent = "";
+        });
+    }
+
+    // Function to validate email format using regex
+    function validateEmail(email) {
+        const re = /^[^\s@@]+@@[^\s@@]+\.[^\s@@]+$/;
+        return re.test(email);
+    }
+
+</script>

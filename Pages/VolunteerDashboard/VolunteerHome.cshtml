@@ -1,0 +1,40 @@
+﻿@page
+@model DisasterAlleviationFoundation.Pages.VolunteerDashboard.VolunteerHomeModel
+<head>
+    <link rel="stylesheet" href="/css/StyleSheet.css" asp-append-version="true" />
+</head>
+@{
+    ViewData["Title"] = "Home";
+}
+<style>
+
+    .message {
+        display: block;
+        max-width: 600px;
+        height: 100%;
+        background-color: white;
+        border-radius: 20px;
+        box-shadow: 0 2px 2px rgba(0,0,1,0.9);
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        margin-left: 2px;
+        padding: 20px 20px;
+    }
+
+    .top-headers {
+        margin-top: 1rem;
+    }
+
+</style>
+<div class="top-headers">
+
+    <h1>View Messages</h1>
+    <h6 class="form-text">View messages from the administration</h6>
+
+</div>
+
+@for(int i = 0; i < Model.description.Count; i++){
+    <div class="message">
+        @Model.description[i]
+    </div>
+}

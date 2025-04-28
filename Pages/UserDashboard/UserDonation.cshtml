@@ -1,0 +1,139 @@
+﻿@page
+@model DisasterAlleviationFoundation.Pages.UserDashboard.UserDonationModel
+<head>
+    <link rel="stylesheet" href="/css/StyleSheet.css" asp-append-version="true" />
+</head>
+<style>
+
+
+</style>
+<div class="top-headers">
+
+    <h1>Donation</h1>
+    <h6 class="form-text">Donate the little you have</h6>
+
+</div>
+
+<div class="forms-container">
+
+    <form class="forms" id="donation-form" method="post" enctype="multipart/form-data">
+
+        <input type="hidden" name="formType" value="donate" />
+
+        <h1 class="form-text">Donate</h1>
+
+        <div id="Details" class="donationType">
+
+            <select id="donationType" class="input" placeholder="" name="donationType" required onchange="handleDonationTypeChange()">
+                <option value="">--Select Resource--</option>
+                <option value="Clothes">Clothes</option>
+                <option value="Food">Food</option>
+                <option value="Medical Supplies">Medical Supplies</option>
+                <option value="Money">Money</option>
+            </select>
+            <label class="label" for="donationType">Type of Donation</label>
+            <span id="donationTypeError" class="error-message"></span>
+        </div>
+
+        <!-- Money Donation Fields -->
+        <div id="moneyFields" style="display: none;">
+
+            <div id="Details" class="donationAmount">
+
+                <input class="input" type="number" placeholder="" id="donationAmount" name="donationAmount" min="1" step="0.01">
+                <label class="label" for="donationAmount">Donation Amount </label>
+                <span id="donationAmountError" class="error-message"></span>
+
+            </div>
+
+            <div id="Details" class="paymentType">
+                <select class="input" id="paymentType" name="paymentType" placeholder="" >
+                    <option value="">--Select Payment Type--</option>
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="Debit Card">Debit Card</option>
+                </select>
+                <label class="label" for="paymentType">Payment Type</label>
+                <span id="paymentTypeError" class="error-message"></span>
+
+            </div>
+
+        </div>
+
+        <!-- Food Donation Fields -->
+        <div id="foodFields" style="display: none;">
+
+            <div id="Details">
+                <select class="input" id="foodType" name="foodType" placeholder="" >
+                    <option value="">--Select Type of Food--</option>
+                    <option value="Non-perishable">Non-perishable</option>
+                    <option value="Perishable">Perishable</option>
+                </select>
+                <label class="label" for="foodType">Type of Food</label>
+                <span id="foodTypeError" class="error-message"></span>
+
+            </div>
+
+        </div>
+
+        <!-- Clothes Donation Fields -->
+        <div id="clothesFields" style="display: none;">
+            <div id="Details" class="numberOfClothes">
+                <input class="input" placeholder="" type="number" id="numberOfClothes" name="numberOfClothes" min="1">
+                <label class="label" for="numberOfClothes">Number of Clothes</label>
+                <span id="numberOfClothesError" class="error-message"></span>
+            </div>
+        </div>
+
+        <div id="Details">
+            <textarea class="input" placeholder="" id="message" name="message" rows="4" required></textarea>
+            <label class="label" for="messages">Message</label>
+        </div>
+
+        <br />
+        <h6 class="form-text">Optional</h6>
+
+        <!-- File input for capturing photo or video -->
+        <div id="Details">
+            <input class="input" type="file" name="CaptureImage" capture accept="image/*" />
+            <label class="label" for="mediaCapture">Upload Picture</label>
+
+        </div>
+
+        <div id="Details">
+            <input class="input" type="file" name="CaptureVideo" capture accept="video/*" />
+            <label class="label" for="mediaCapture">Upload Video</label>
+
+        </div>
+
+        <br />
+        <p>@Model.error</p>
+        <br />
+        <button type="submit">Donate</button>
+
+
+    </form>
+
+</div>
+
+<script>
+
+    function handleDonationTypeChange() {
+        const donationType = document.getElementById('donationType').value;
+
+        // Hide all fields initially
+        document.getElementById('moneyFields').style.display = 'none';
+        document.getElementById('foodFields').style.display = 'none';
+        document.getElementById('clothesFields').style.display = 'none';
+
+        // Show relevant fields based on selection
+        if (donationType === 'Money') {
+            document.getElementById('moneyFields').style.display = 'block';
+        } else if (donationType === 'Food') {
+            document.getElementById('foodFields').style.display = 'block';
+        } else if (donationType === 'Clothes') {
+            document.getElementById('clothesFields').style.display = 'block';
+        }
+    }
+
+
+</script>
