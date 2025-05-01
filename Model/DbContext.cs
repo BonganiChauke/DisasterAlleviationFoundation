@@ -14,8 +14,8 @@ namespace DisasterAlleviationFoundation.Model
 {
     public class DbContext
     {
-        //connection string to azure database
-        public static SqlConnection Connection = new SqlConnection(@"Server=tcp:appr-6312.database.windows.net,1433;Initial Catalog=database;Persist Security Info=False;User ID=st10061533;Password=BR.c11@ST533;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+        //connection string to local server database
+        public static SqlConnection Connection = new SqlConnection(@"Server=localhost\SQLEXPRESS01;Database=DisasterAlleviationFoundation;Trusted_Connection=True;");
 
         //method to hash password
         public static string ComputeHash(string password)
