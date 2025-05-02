@@ -15,7 +15,7 @@ namespace DisasterAlleviationFoundation.Model
     public class DbContext
     {
         //connection string to local server database
-        public static SqlConnection Connection = new SqlConnection(@"Server=localhost\SQLEXPRESS01;Database=DisasterAlleviationFoundation;Trusted_Connection=True;");
+        public static SqlConnection Connection = new SqlConnection(@"Server=Romeo\SQLEXPRESS;Database=DisasterAlleviationFoundation;Trusted_Connection=True;");
 
         //method to hash password
         public static string ComputeHash(string password)
