@@ -19,3 +19,9 @@ Disaster Alleviation Foundation is an web application that is designed to enable
     - Give Feedback.
     - Manage Profile.
     - Request to be a volunteer.
+# Techologies Used
+- C#
+- HTML
+- CSS
+- JavaScript
+- .Net Framework
